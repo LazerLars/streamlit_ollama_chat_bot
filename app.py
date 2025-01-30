@@ -1,5 +1,5 @@
 # this project is a simpliciation of this project: https://github.com/romilandc/streamlit-ollama-llm
-# main difference is its not using torch
+# main difference is its not using torch, which gives the option of selecting between using the gpu or cpu in the example from romilandc
 import streamlit as st
 import ollama
 

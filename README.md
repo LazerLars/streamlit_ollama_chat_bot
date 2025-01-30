@@ -1,4 +1,4 @@
-# streamlit_ollama_chat_bot
+# Setup a chatbot locally using Python Streamlit and Ollama
 Setup a quick chatbot locally with ollama and streamlit. This is made from a Windows machine, so you might need to modify a few steps if you are on a Linux or Mac machine ma dudes.
 
 ## Download and install Ollama on your computer
