@@ -5,8 +5,10 @@ import ollama
 
 st.title("Ollama Python Chatbot")
 
-if "messages" not in st.session_state:
-    st.session_state["messages"] = []
+modelSessionKey = "model"
+messagesSessionKey = "messages"
+if messagesSessionKey not in st.session_state:
+    st.session_state[messagesSessionKey] = []
 
 # ------------------------
 # ------------------------
@@ -21,14 +23,15 @@ if "messages" not in st.session_state:
 # ------------------------
 
 # get a list of the models installed on your drive
-models = [model.model for model in ollama.list().models]
+allLocalModels = [model.model for model in ollama.list().models]
+
 
 # init models in session state
-if "model" not in st.session_state:
-    st.session_state["model"] = ""
+if modelSessionKey not in st.session_state:
+    st.session_state[modelSessionKey] = ""
 
 # select a model
-st.session_state["model"] = st.selectbox("Choose your model", models)
+st.session_state[modelSessionKey] = st.selectbox("Select a model from your local drive", allLocalModels)
 
 # function to chat with the ollama model
 # everytime the user is submitting a promt, we provide the full msg history in the st.session_state["messages"], so the LLM knows the full history of the current chat, so it can use context from the preivous chats messages
@@ -37,8 +40,8 @@ def ask_llm_model():
     # Use ollama's API to generate responses for each message in the session state
     # the reason the entire message history is provided and not just the latest is due to give the LLM the full context of the users chat. Then the model can figoure out where you left of from your last msg
     stream = ollama.chat(
-        model=st.session_state["model"],
-        messages=st.session_state["messages"],
+        model=st.session_state[modelSessionKey],
+        messages=st.session_state[messagesSessionKey],
         stream=True,
     )
     
@@ -47,14 +50,14 @@ def ask_llm_model():
         yield word["message"]["content"]
 
 # show the entire chat history
-for message in st.session_state["messages"]:
+for message in st.session_state[messagesSessionKey]:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
 # when a promt is sent this is triggered
-if prompt := st.chat_input("Enter prompt here.."):
+if prompt := st.chat_input("Ask ma dude"):
     # role: user will give a icon with a person in the chat history
-    st.session_state["messages"].append({"role": "user", "content": prompt})
+    st.session_state[messagesSessionKey].append({"role": "user", "content": prompt})
 
     # the user promt msg is written here: 
     with st.chat_message("user"):
