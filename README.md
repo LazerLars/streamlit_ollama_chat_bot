@@ -91,3 +91,5 @@ The complexity have been reduced a little bit with removing the Torch package, w
 This have all been run on a ThinkPad T14 Gen3. Depending on your computer some of the responses may be quicker/slower than otheres.  
 
 As far a my knowledge reach, then using Ollama means you can run the models totally locally without having the risk of your data beeing send to third parties. Thanks to Ollama for making this possible :) 
+
+[Credits to romilandc](https://github.com/romilandc)
