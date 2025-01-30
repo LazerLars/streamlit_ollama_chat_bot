@@ -1,5 +1,7 @@
-# this project is a simpliciation of this project: https://github.com/romilandc/streamlit-ollama-llm
+# this project is a simpliciation of this project: https://github.com/romilandc/streamlit-ollama-llm and woudnt be possible with out that starter
 # main difference is its not using torch, which gives the option of selecting between using the gpu or cpu in the example from romilandc
+# all credits goes to: https://github.com/romilandc/streamlit-ollama-llm
+
 import streamlit as st
 import ollama
 
@@ -7,6 +9,7 @@ st.title("Ollama Python Chatbot")
 
 modelSessionKey = "model"
 messagesSessionKey = "messages"
+
 if messagesSessionKey not in st.session_state:
     st.session_state[messagesSessionKey] = []
 
@@ -55,15 +58,17 @@ for message in st.session_state[messagesSessionKey]:
         st.markdown(message["content"])
 
 # when a promt is sent this is triggered
-if prompt := st.chat_input("Ask ma dude"):
+userChatPromt = st.chat_input("Ask ma dude")
+
+if userChatPromt: 
     # role: user will give a icon with a person in the chat history
-    st.session_state[messagesSessionKey].append({"role": "user", "content": prompt})
+    st.session_state[messagesSessionKey].append({"role": "user", "content": userChatPromt})
 
     # the user promt msg is written here: 
     with st.chat_message("user"):
-        st.markdown(prompt)
+        st.markdown(userChatPromt)
 
-    # the ai response
+    # the llm/ai response
     with st.chat_message("assistant"):
         message = st.write_stream(ask_llm_model())
         # role assistent will give a icon of a robot in the chat history
