@@ -85,8 +85,8 @@ Here you see I installed 3 LLM models on my machine, now you can choose the mode
 
 ![](img/app_in_use.py.png)
 
-This project was only possible due to the good work of https://github.com/romilandc/streamlit-ollama-llm which this is really heavily a modifed fork of.
-The complexity have been reduced a little bit with removing the Torch package, where you can choose weather to use GPU or CPU. Also comments have been added for the code, which I find many new comers to running your first LLM model locally will benefit from. 
+This project was only possible due to the good work of [https://github.com/romilandc/streamlit-ollama-llm](https://github.com/romilandc/streamlit-ollama-llm) which this is really heavily a modifed fork of.
+The complexity have been reduced a little bit with removing the Torch package, where you can choose weather to use GPU or CPU which are used in romilandc original version. Also comments have been added for the code, which I find many new comers to running your first LLM model locally will benefit from. 
 
 This have all been run on a ThinkPad T14 Gen3. Depending on your computer some of the responses may be quicker/slower than otheres.  
 
