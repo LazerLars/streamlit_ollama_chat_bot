@@ -35,7 +35,7 @@ The project is setup for VSCODE
 git clone https://github.com/LazerLars/streamlit_ollama_chat_bot.git
 
 ## launch.json for debugging streamlit
-The .vscode/lanch.json file lets you open a streamlit in vs code on F5 and debug your streamlit app.  
+The .vscode/lanch.json file lets you run a streamlit in vs code on F5 and debug your streamlit app.  
 If you for some reason need to debug another regular python file for test purposes then you need to switch the debugger.  
 Press Ctrl + D  
 ![](img/change_debugger_vs_code.png)  
