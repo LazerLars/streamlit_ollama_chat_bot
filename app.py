@@ -60,6 +60,7 @@ for message in st.session_state[messagesSessionKey]:
 # when a promt is sent this is triggered
 userChatPromt = st.chat_input("Ask ma dude")
 
+# this is run when the user sends a chat promt
 if userChatPromt: 
     # role: user will give a icon with a person in the chat history
     st.session_state[messagesSessionKey].append({"role": "user", "content": userChatPromt})
